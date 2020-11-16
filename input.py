@@ -65,4 +65,4 @@ print('\nWithout type -\t' + requests.post(url=url, data=json.dumps(data)).text)
 data = {'tz_start': 'Etc/GMT+12', 'tz_end': 'Etc/GMT+12'}
 print('\nWithout json.dump() -\t' + requests.post(url=url, data=data).text)
 
-input('\n--------------------------------------------------------------------------\n')
+print('\n--------------------------------------------------------------------------\n')
