@@ -3,18 +3,18 @@ import json
 
 url = 'http://127.0.0.1:8080'
 
-print('\nGET')
+print('-------------------------------------\n\nGET',end='\n\n-------------------------------------\n')
 
 print('\ntime in server zone -\t' + requests.get(url).text)
 
 print('\ntime in server zone -\t' + requests.get(url+'/America/Chihuahua').text)
 
-print('\nCheck on error in GET')
+print('\n-------------------------------------\n\nCheck on error in GET',end='\n\n-------------------------------------\n')
 
 print('\ntime in server zone -\t' + requests.get(url+'/Etc/GMT+30').text)
 
 
-print('\nPOST')
+print('\n-------------------------------------\n\nPOST',end='\n\n-------------------------------------\n')
 data = {'tz_start': 'America/Chihuahua', 'type': 'date'}
 print('\ndate -\t' + requests.post(url=url, data=json.dumps(data)).text)
 
@@ -42,7 +42,7 @@ print('\nTime difference -\t' + requests.post(url=url, data=json.dumps(data)).te
 data = {'tz_start': 'Etc/GMT+12', 'tz_end': 'Etc/GMT+12', 'type': 'datediff'}
 print('\nTime difference -\t' + requests.post(url=url, data=json.dumps(data)).text)
 
-print('\nCheck on error in POST')
+print('\n-------------------------------------\n\nCheck on error in POST',end='\n\n-------------------------------------\n')
 
 data = {'tz_end': 'Etc/GMT+12', 'type': 'datediff'}
 print('\nWithout start argument -\t' + requests.post(url=url, data=json.dumps(data)).text)
@@ -64,3 +64,5 @@ print('\nWithout type -\t' + requests.post(url=url, data=json.dumps(data)).text)
 
 data = {'tz_start': 'Etc/GMT+12', 'tz_end': 'Etc/GMT+12'}
 print('\nWithout json.dump() -\t' + requests.post(url=url, data=data).text)
+
+input('\n--------------------------------------------------------------------------\n')
