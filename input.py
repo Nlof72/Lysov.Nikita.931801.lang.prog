@@ -50,6 +50,12 @@ print('\nWithout start argument -\t' + requests.post(url=url, data=json.dumps(da
 data = {'tz_start': 'Etc/GMT+12', 'type': 'datediff'}
 print('\nWithout end argument -\t' + requests.post(url=url, data=json.dumps(data)).text)
 
+data = {'tz_start': 'America/Chihuahu', 'tz_end': 'Australia/Darwin', 'type': 'datediff'}
+print('\nUnknown time zone in first argument  -\t' + requests.post(url=url, data=json.dumps(data)).text)
+
+data = {'tz_start': 'America/Chihuahua', 'tz_end': 'Australia/Darwi', 'type': 'datediff'}
+print('\nUnknown time zone in second argument -\t' + requests.post(url=url, data=json.dumps(data)).text)
+
 data = {'type': 'datediff'}
 print('\nWithout all arguments -\t' + requests.post(url=url, data=json.dumps(data)).text)
 

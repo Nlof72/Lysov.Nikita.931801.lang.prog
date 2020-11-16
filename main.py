@@ -53,13 +53,11 @@ def app(environ, start_response):
                     return [bytes('UnknownTimeZoneError', encoding='utf-8')]
             except:
                 zona = local_time
-            date = datetime.now(tz=zona).strftime('%d %b %Y')
-            time = datetime.now(tz=zona).strftime('%I:%M:%S%p %Z')
             start_response('200 OK', [('Content-Type', 'text/plain')])
             if type == 'date':
-                return [bytes(json.dumps({'Date': date, 'TimeZone': str(zona)}), encoding='utf-8')]
+                return [bytes(json.dumps({'Date': datetime.now(tz=zona).strftime('%d %b %Y'), 'TimeZone': str(zona)}), encoding='utf-8')]
             else:
-                return [bytes(json.dumps({'Time': time, 'TimeZone': str(zona)}), encoding='utf-8')]
+                return [bytes(json.dumps({'Time': datetime.now(tz=zona).strftime('%I:%M:%S%p %Z'), 'TimeZone': str(zona)}), encoding='utf-8')]
 
         if type == 'datediff':
             try:
